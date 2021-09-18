@@ -164,6 +164,22 @@ SumList.call([5,2,3])
 #=> 10
 ```
 
+### Tail Call Optimization
+
+[Tail Call Optimization](https://www.notion.so/Recursividade-e-Tail-Call-Optimization-79f2a8103b174d6db58d8bea19546c0d) seria uma recursão mais otimizada. Na nossa função, na verdade não precisaria do `acc`. Seria só retornar a `head` somada com a chamada da próxima recursão.
+
+```elixir
+defmodule SumList do
+  def call(list), do: sum(list)
+
+  defp sum([]), do: 0
+
+  defp sum([head | tail]) do
+    head + sum(tail)
+  end
+end
+```
+
 ### Testes
 
 Abrindo o arquivo de testes `test/sum_list_test.exs`. Podemos deletar o `doctest` pois ele testa todo código que tem na documentação e executa para ver se está funcionando corretamente. Mas como deletamos a documentação, não usaremos essa funcionalidade.
